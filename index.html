@@ -49,8 +49,9 @@
                 console.info('Got ME');
                 console.dir(me);
                 document.getElementById('auth-displayname').innerHTML = me.name;
-                FB.api('/me/friends', function(friends) {
-                  if (friends) {
+                FB.api('/me/friends', function(o) {
+                  if (o.data) {
+                    var friends = o.data;
                     console.info('Got Friends');
                     console.dir(friends);
                     for (var i = 0; i < friends.length; i++) {
