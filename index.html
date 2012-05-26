@@ -48,7 +48,7 @@
               if (me.name) {
                 console.info('Got ME');
                 console.dir(me);
-                document.getElementById('auth-displayname').innerHTML = me.name;
+                document.getElementById('auth-displayname').innerHTML = me.name + '\'s ';
                 FB.api('/me/friends', function(o) {
                   if (o.data) {
                     var friends = o.data;
@@ -91,7 +91,7 @@
 
     <div class="wrapper">
       <div id="title">
-        <h1><span id="auth-displayname"></span>'s Hairy Friends</h1>
+        <h1><span id="auth-displayname"></span>Hairy Friends</h1>
         <hr>
       </div>
       <div id="auth-status">
