@@ -47,12 +47,12 @@
                 console.info('Got ME');
                 console.dir(me);
                 document.getElementById('auth-displayname').innerHTML = me.name + '\'s ';
-                FB.api('/me/friends', {fields: 'name,last_name,id' }, function(o) {
+                FB.api('/me/friends', {fields: 'name,last_name,id', limit:50, offset: 0 }, function(o) {
                   if (o.data) {
                     var friends = o.data;
                     friends.sort(function(a,b) { return a.last_name.toLocaleLowerCase().localeCompare(b.last_name.toLocaleLowerCase()); });
                     console.info('Got Friends');
-                    console.dir(friends);
+                    console.dir(o);
                     for (var i = 0; i < friends.length; i++) {
                       var img = document.createElement('img');
                       img.src = 'http://mustachify.me/?src=https://graph.facebook.com/' + friends[i].id + '/picture?type=normal';
@@ -88,7 +88,6 @@
 
     <div class="wrapper">
       <div id="title">
-        
         <h1><img src='images/f_mustache_48.png'/> <span id="auth-displayname"></span>Friends with Mustaches</h1>
       </div>
       <div id="auth-status">
@@ -96,14 +95,14 @@
           <a href='http://mustachify.me'>Mustachify</a> your <a href='http://facebook.com/'>Facebook</a> friends.
           <div>
             <a href='#' id="auth-loginlink">Login</a>
-            </div>
+          </div>
         </div>
         <div id="auth-loggedin" style="display:none">
-
-        <div id="friends"></div>
-        <div>
-          <a href='#' id='auth-logoutlink'>Logout</a>
+          <div>
+            <a href='#' id='auth-logoutlink'>Logout</a>
           </div>
+          <div id="friends"></div>
+        </div>
       </div>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
