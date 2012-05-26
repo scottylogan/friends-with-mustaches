@@ -44,15 +44,11 @@
             // user has auth'd your app and is logged into Facebook
             FB.api('/me', function(me){
               if (me.name) {
-                console.info('Got ME');
-                console.dir(me);
                 document.getElementById('auth-displayname').innerHTML = me.name + '\'s ';
-                FB.api('/me/friends', {fields: 'name,last_name,id', limit:50, offset: 0 }, function(o) {
+                FB.api('/me/friends', {fields: 'name,last_name,id' }, function(o) {
                   if (o.data) {
                     var friends = o.data;
                     friends.sort(function(a,b) { return a.last_name.toLocaleLowerCase().localeCompare(b.last_name.toLocaleLowerCase()); });
-                    console.info('Got Friends');
-                    console.dir(o);
                     for (var i = 0; i < friends.length; i++) {
                       var img = document.createElement('img');
                       img.src = 'http://mustachify.me/?src=https://graph.facebook.com/' + friends[i].id + '/picture?type=normal';
