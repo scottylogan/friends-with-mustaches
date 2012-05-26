@@ -38,8 +38,6 @@
           xfbml      : true  // parse XFBML
         });
 
-
-
         // listen for and handle auth.statusChange events
         FB.Event.subscribe('auth.statusChange', function(response) {
           if (response.authResponse) {
@@ -49,9 +47,10 @@
                 console.info('Got ME');
                 console.dir(me);
                 document.getElementById('auth-displayname').innerHTML = me.name + '\'s ';
-                FB.api('/me/friends', function(o) {
+                FB.api('/me/friends', {fields: 'name,last_name,id' }, function(o) {
                   if (o.data) {
                     var friends = o.data;
+                    friends.sort(function(a,b) { return a.last_name.toLocaleLowerCase().localeCompare(b.last_name.toLocaleLowerCase()); });
                     console.info('Got Friends');
                     console.dir(friends);
                     for (var i = 0; i < friends.length; i++) {
