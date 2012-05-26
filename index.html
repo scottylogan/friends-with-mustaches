@@ -55,14 +55,12 @@
                     console.info('Got Friends');
                     console.dir(friends);
                     for (var i = 0; i < friends.length; i++) {
-                      var li = document.createElement('li');
-                      var p = document.createElement('p');
-                      p.innerHTML = friends[i].name;
-    //                  var img = document.createElement('img');
-    //                  img.src = 'https://graph.facebook.com/' + friends[i].id + '/picture?type=large';
-                      li.appendChild(p);
-    //                  li.appendChild(img);
-                      document.getElementById('friends').appendChild(li);
+                      var h3 = document.createElement('h3');
+                      h3.innerHTML = friends[i].name;
+                      document.getElementById('friends').appendChild(h3);
+                      var img = document.createElement('img');
+                      img.src = 'https://graph.facebook.com/' + friends[i].id + '/picture?type=large';
+                      document.getElementById('friends').appendChild(img);
                     }
                   }
                 });
@@ -104,8 +102,8 @@
               <h1><span id="auth-displayname"></span>'s Hairy Friends</h1>
               <hr>
             </div>
-            <ul id="friends">
-            </ul>
+            <div id="friends">
+            </div>
           </section>
         </div>
       </div>
