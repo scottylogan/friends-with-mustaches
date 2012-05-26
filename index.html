@@ -62,6 +62,7 @@
 //                      a.target = '_blank';
                       var img = document.createElement('img');
                       img.src = 'http://mustachify.me/?src=https://graph.facebook.com/' + friends[i].id + '/picture?type=normal';
+                      img.alt = friends[i].name;
 //                      a.appendChild(img);
 //                      document.getElementById('friends').appendChild(a);
                       document.getElementById('friends').appendChild(img);
