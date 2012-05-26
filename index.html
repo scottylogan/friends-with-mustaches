@@ -57,9 +57,13 @@
                       var h3 = document.createElement('h3');
                       h3.innerHTML = friends[i].name;
                       document.getElementById('friends').appendChild(h3);
+                      var a = document.createElement('a');
+                      a.href = 'http://mustachify.me/?src=https://graph.facebook.com/' + friends[i].id + '/picture?type=large';
+                      a.target = '_blank';
                       var img = document.createElement('img');
-                      img.src = 'http://mustachify.me/?src=https://graph.facebook.com/' + friends[i].id + '/picture?type=large';
-                      document.getElementById('friends').appendChild(img);
+                      img.src = 'http://mustachify.me/?src=https://graph.facebook.com/' + friends[i].id + '/picture?type=normal';
+                      a.appendChild(img);
+                      document.getElementById('friends').appendChild(a);
                     }
                   }
                 });
