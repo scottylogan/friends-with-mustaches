@@ -51,7 +51,22 @@
                 document.getElementById('auth-displayname').innerHTML = me.name;
               }
             });
-            FB.api('/')
+            FB.api('/me/friends', function(friends) {
+              if (friends) {
+                console.info('Got Friends');
+                console.dir(friends);
+                for (var i = 0; i < friends.length; i++) {
+                  var li = document.createElement('li');
+                  var p = document.createElement('p');
+                  p.innerHTML = friends[i].name;
+                  var img = document.createElement('img');
+                  img.src = 'https://graph.facebook.com/' + friends[i].id + '/picture?type=large';
+                  li.appendChild(p);
+                  li.appendChild(img);
+                  document.getElementById('friends').appendChild(li);
+                }
+              }
+            });
             document.getElementById('auth-loggedout').style.display = 'none';
             document.getElementById('auth-loggedin').style.display = 'block';
           } else {
@@ -86,10 +101,10 @@
           <section>
             <div id="title">
               <h1><span id="auth-displayname"></span>'s Hairy Friends</h1>
-              <p></p>
               <hr>
             </div>
-
+            <ul id="friends">
+            </ul>
           </section>
         </div>
       </div>
