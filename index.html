@@ -90,22 +90,18 @@
     </script>
 
     <div class="wrapper">
+      <div id="title">
+        <h1><span id="auth-displayname"></span>'s Hairy Friends</h1>
+        <hr>
+      </div>
       <div id="auth-status">
         <div id="auth-loggedout">
-          <a href="#" id="auth-loginlink">Login</a>
+          <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
+<!--          <a href="#" id="auth-loginlink">Login</a> -->
         </div>
         <div id="auth-loggedin" style="display:none">
-          (<a href="#" id="auth-logoutlink">logout</a>)
 
-          <section>
-            <div id="title">
-              <h1><span id="auth-displayname"></span>'s Hairy Friends</h1>
-              <hr>
-            </div>
-            <div id="friends">
-            </div>
-          </section>
-        </div>
+        <div id="friends"></div>
       </div>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
