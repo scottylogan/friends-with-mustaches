@@ -5,102 +5,19 @@
     <title>Friends With Mustaches</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
   </head>
   <body>
-    <div id="fb-root"></div>
-    <script>
-      // Load the SDK Asynchronously
-      (function(d){
-         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement('script'); js.id = id; js.async = true;
-         js.src = "//connect.facebook.net/en_US/all.js";
-         ref.parentNode.insertBefore(js, ref);
-       }(document));
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '315681801842705', // App ID
-//          channelUrl : '//scottylogan.github.com/hairy-friends/channel.html', // Channel File
-          status     : true, // check login status
-          cookie     : true, // enable cookies to allow the server to access the session
-          xfbml      : true  // parse XFBML
-        });
-
-        // listen for and handle auth.statusChange events
-        FB.Event.subscribe('auth.statusChange', function(response) {
-          if (response.authResponse) {
-            // user has auth'd your app and is logged into Facebook
-            FB.api('/me', function(me){
-              if (me.name) {
-                document.getElementById('auth-displayname').innerHTML = me.name + '\'s ';
-                FB.api('/me/friends', {fields: 'name,last_name,id' }, function(o) {
-                  if (o.data) {
-                    var friends = o.data;
-                    friends.sort(function(a,b) { return a.last_name.toLocaleLowerCase().localeCompare(b.last_name.toLocaleLowerCase()); });
-                    for (var i = 0; i < friends.length; i++) {
-                      var img = document.createElement('img');
-                      img.src = 'http://mustachify.me/?src=https://graph.facebook.com/' + friends[i].id + '/picture?type=normal';
-                      img.title = img.alt = friends[i].name;
-                      document.getElementById('friends').appendChild(img);
-                    }
-                  }
-                });
-              }
-            });
-            document.getElementById('auth-loggedout').style.display = 'none';
-            document.getElementById('auth-loggedin').style.display = 'block';
-          } else {
-            // user has not auth'd your app, or is not logged into Facebook
-            document.getElementById('auth-loggedout').style.display = 'block';
-            document.getElementById('auth-loggedin').style.display = 'none';
-          }
-        });
-
-        // respond to clicks on the login and logout links
-        document.getElementById('auth-loginlink').addEventListener('click', function(){
-          FB.login();
-        });
-        document.getElementById('auth-logoutlink').addEventListener('click', function(){
-          FB.logout();
-        });
-
-        // Additional initialization code here
-      };
- 
-
-    </script>
-
     <div class="wrapper">
       <div id="title">
         <h1><img src='images/f_mustache_48.png' alt='logo'/> <span id="auth-displayname"></span>Friends with Mustaches</h1>
       </div>
-      <div id="auth-status">
-        <div id="auth-loggedout">
-          <a href='http://mustachify.me'>Mustachify</a> your <a href='http://facebook.com/'>Facebook</a> friends.
-          <div>
-            <a href='#' id="auth-loginlink">Login</a>
-          </div>
-        </div>
-        <div id="auth-loggedin" style="display:none">
-          <div>
-            <a href='#' id='auth-logoutlink'>Logout</a>
-          </div>
-          <div id="friends"></div>
-        </div>
+
+      <div>
+        <p>This stopped working years ago</p>
       </div>
     </div>
-    <!--[if !IE]<script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
